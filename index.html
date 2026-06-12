@@ -3,114 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Strainpedia API</title>
-
+<title>Strainpedia API Examples</title>
 <style>
-body{
-    font-family:Arial,sans-serif;
-    margin:0;
-    background:#f5f7f9;
-}
-
-.hero{
-    background:#0b5d3f;
-    color:white;
-    text-align:center;
-    padding:80px 20px;
-}
-
-.btn{
-    display:inline-block;
-    margin:10px;
-    padding:12px 20px;
-    background:white;
-    color:#0b5d3f;
-    text-decoration:none;
-    border-radius:6px;
-    font-weight:bold;
-}
-
-.section{
-    max-width:1000px;
-    margin:auto;
-    padding:50px 20px;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7f9;color:#111827}
+.hero{background:linear-gradient(135deg,#064e3b,#047857);color:white;text-align:center;padding:80px 20px}
+.hero h1{font-size:42px;margin:0 0 15px}
+.hero p{max-width:760px;margin:15px auto;font-size:18px;line-height:1.6}
+.btn{display:inline-block;margin:8px;padding:14px 22px;background:white;color:#064e3b;text-decoration:none;border-radius:8px;font-weight:800}
+.btn.gold{background:#facc15;color:#111827}
+.section{max-width:1100px;margin:auto;padding:55px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;padding:24px;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.stat{font-size:30px;font-weight:900;color:#047857}
+pre{background:#0b1020;color:#e5eefb;padding:22px;border-radius:12px;overflow:auto}
+.footer{text-align:center;background:#111827;color:white;padding:35px 20px}
+a{color:#047857}
 </style>
 </head>
-
 <body>
 
-<div class="hero">
-    <h1>Strainpedia API</h1>
+<section class="hero">
+<h1>Build Cannabis Apps With Strainpedia Data</h1>
+<p>Use structured cannabis strain data for AI assistants, WooCommerce stores, directories, mobile apps, and strain comparison tools.</p>
+<a class="btn" href="https://www.strainpedia.com/api/">API Documentation</a>
+<a class="btn gold" href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/gelato">Try Live Demo</a>
+<a class="btn" href="https://github.com/strainpedia/strainpedia-api-examples">GitHub Repository</a>
+</section>
 
-    <p>
-        Build cannabis apps, AI assistants,
-        WooCommerce stores and strain databases.
-    </p>
-
-    <a class="btn"
-       href="https://www.strainpedia.com/api/">
-       API Documentation
-    </a>
-
-    <a class="btn"
-       href="https://github.com/strainpedia/strainpedia-api-examples">
-       GitHub Repository
-    </a>
+<section class="section">
+<div class="grid">
+<div class="card"><div class="stat">$50</div><h3>Monthly Subscription</h3><p>Developer API access with commercial use while active.</p></div>
+<div class="card"><div class="stat">10K</div><h3>Monthly Requests</h3><p>Up to 10,000 API requests per month included.</p></div>
+<div class="card"><div class="stat">v1</div><h3>REST API</h3><p>Search, single strain, all strains, compare, and demo endpoints.</p></div>
+<div class="card"><div class="stat">WP</div><h3>Plugin Included</h3><p>Official WordPress Client Pro plugin included with subscription.</p></div>
 </div>
+</section>
 
-<div class="section">
-
-<h2>Demo Strains</h2>
-
-<div class="card">
-<a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/blue-dream">
-Blue Dream Demo
-</a>
+<section class="section">
+<h2>Live Demo Strains</h2>
+<div class="grid">
+<div class="card"><h3>Blue Dream</h3><a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/blue-dream">View JSON</a></div>
+<div class="card"><h3>Gelato</h3><a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/gelato">View JSON</a></div>
+<div class="card"><h3>OG Kush</h3><a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/og-kush">View JSON</a></div>
+<div class="card"><h3>Northern Lights</h3><a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/northern-lights">View JSON</a></div>
+<div class="card"><h3>Girl Scout Cookies</h3><a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/girl-scout-cookies">View JSON</a></div>
 </div>
+</section>
 
-<div class="card">
-<a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/gelato">
-Gelato Demo
-</a>
+<section class="section">
+<h2>Example API Response</h2>
+<pre>{
+  "success": true,
+  "demo": true,
+  "data": {
+    "name": "Gelato",
+    "slug": "gelato",
+    "type": "Hybrid",
+    "genetics": "Sunset Sherbet × Thin Mint GSC",
+    "thc_range": "20%–27%",
+    "terpenes": ["Limonene", "Myrcene", "Caryophyllene"],
+    "effects": ["Creative", "Relaxing", "Social"],
+    "flavors": ["Citrus", "Berry", "Sweet"]
+  }
+}</pre>
+</section>
+
+<section class="section">
+<h2>Code Example</h2>
+<pre>fetch("https://www.strainpedia.com/wp-json/strainpedia/v1/demo/gelato")
+  .then(response => response.json())
+  .then(data => console.log(data));</pre>
+</section>
+
+<section class="section">
+<h2>What You Can Build</h2>
+<div class="grid">
+<div class="card"><h3>AI Cannabis Assistant</h3><p>Use strain effects, terpenes, genetics, and flavors in AI tools.</p></div>
+<div class="card"><h3>Strain Comparison Tool</h3><p>Compare strains by slug using structured data.</p></div>
+<div class="card"><h3>WooCommerce Store</h3><p>Use the WordPress plugin to support product and strain pages.</p></div>
+<div class="card"><h3>Mobile App</h3><p>Power cannabis discovery and education features.</p></div>
 </div>
+</section>
 
-<div class="card">
-<a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/og-kush">
-OG Kush Demo
-</a>
-</div>
+<section class="hero">
+<h2>Ready To Build With Cannabis Data?</h2>
+<p>Unlock search, compare, pagination, full developer endpoints, commercial usage, and the WordPress plugin.</p>
+<a class="btn gold" href="https://www.strainpedia.com/api/#subscribe">$50/month Subscription</a>
+</section>
 
-<div class="card">
-<a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/northern-lights">
-Northern Lights Demo
-</a>
-</div>
-
-<div class="card">
-<a href="https://www.strainpedia.com/wp-json/strainpedia/v1/demo/girl-scout-cookies">
-Girl Scout Cookies Demo
-</a>
-</div>
-
-</div>
-
-<div class="hero">
-    <h2>Get Full API Access</h2>
-
-    <a class="btn"
-       href="https://www.strainpedia.com/api/#subscribe">
-       Subscribe Now
-    </a>
-</div>
+<footer class="footer">
+<p>Strainpedia API Examples</p>
+<p><a href="https://www.strainpedia.com/api/">API Documentation</a> · <a href="https://github.com/strainpedia/strainpedia-api-examples">GitHub</a></p>
+</footer>
 
 </body>
 </html>
